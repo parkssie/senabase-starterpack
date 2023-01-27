@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='senabase-starterpack',
-      version='0.1.0',
+      version='0.1.1',
 
       description='SENABASE Starterpack',
       author='Jungkyu Park',
@@ -13,5 +13,5 @@ setup(name='senabase-starterpack',
       packages=find_packages("senabase", exclude=["prototypes"]),
       install_requires=[
           'psycopg2-binary>=2.9.*',
-          'yaml>=6.*',
+          'pyyaml>=6.*',
       ])
