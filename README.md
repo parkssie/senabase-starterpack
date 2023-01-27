@@ -1,6 +1,21 @@
 # senabase-starterpack
 
-Starterpack for fast prototyping
+senabase-starterpack is library for fast prototyping
+
+## Installation
+
+Use `pip` to download it from [PyPI](https://pypi.org/project/senabase-starterpack/)
+
+```shell
+$ pip install senabase-starterpack
+```
+
+The minimum required versions of the respective tools are:
+
+```
+psycopg2-binary>=2.9.*
+pyyaml>=6.*
+```
 
 ## Example
 
