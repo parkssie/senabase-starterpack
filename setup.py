@@ -6,7 +6,7 @@ setup(name='senabase-starterpack',
       description='SENABASE Starterpack',
       author='Jungkyu Park',
       author_email='parkssie@gmail.com',
-      url='https://parkssie.github.io/senabase',
+      url='https://github.com/parkssie/senabase-starterpack',
 
       python_requires='>=3.11',
       package_dir={'': 'senabase'},
