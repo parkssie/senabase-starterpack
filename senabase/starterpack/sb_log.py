@@ -6,7 +6,21 @@ from logging.handlers import RotatingFileHandler
 _log = None
 
 
-def configure(app_id: str, log_level: str = "DEBUG", log_fmt: str = "%(asctime)s %(levelname)s: %(message)s") -> None:
+def configure(app_id: str,
+              log_level: str = "DEBUG",
+              log_fmt: str = "%(asctime)s %(levelname)s: %(message)s",
+              log_backupcount=50,
+              log_maxbytes=10000000  # 10MB
+              ) -> None:
+    """
+    configure logger with RotatingFileHandler
+    :param app_id: application id
+    :param log_level: log level (CRITICAL|ERROR|WARNING|INFO|DEBUG|NOTSET)
+    :param log_fmt: default %(asctime)s %(levelname)s: %(message)s
+    :param log_backupcount: Backup file count (default 50)
+    :param log_maxbytes: Max file size in byte for each log file (default 10000000  # 10MB)
+    :return:
+    """
     global _log
 
     caller = inspect.stack()
@@ -15,13 +29,10 @@ def configure(app_id: str, log_level: str = "DEBUG", log_fmt: str = "%(asctime)s
     log_file: str = f"{app_id}.log"
     log_path = os.path.join(parent_path, 'logs')
     log_file = os.path.join(log_path, log_file)
-    log_backupcount: int = 50
-    log_maxbytes: int = 10000000  # 10MB
 
     os.makedirs(log_path, exist_ok=True)
 
-    file_handler = RotatingFileHandler(filename=log_file, maxBytes=log_maxbytes,
-                                       backupCount=log_backupcount)
+    file_handler = RotatingFileHandler(filename=log_file, maxBytes=log_maxbytes, backupCount=log_backupcount)
     file_handler.setFormatter(logging.Formatter(log_fmt))
     stream_hander = logging.StreamHandler()
     stream_hander.setFormatter(logging.Formatter(log_fmt))
@@ -31,12 +42,12 @@ def configure(app_id: str, log_level: str = "DEBUG", log_fmt: str = "%(asctime)s
     _log.setLevel(log_level)
 
 
-def i(v):
-    _log.info(v)
+def i(msg):
+    _log.info(msg)
 
 
-def d(v):
-    _log.debug(v)
+def d(msg):
+    _log.debug(msg)
 
 
 def e(ex: Exception):
