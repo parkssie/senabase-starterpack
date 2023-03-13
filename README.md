@@ -1,6 +1,6 @@
 # senabase-starterpack
 
-senabase-starterpack is library for fast prototyping
+senabase-starterpack is personal library for fast prototyping.
 
 ## Installation
 
@@ -19,29 +19,31 @@ pyyaml>=6.*
 
 ## Example
 
-### sb_pg
+### PostgreSQLHandler
 
 Postgresql starterpack
 
 ```python
-from senabase.starterpack import sb_pg
+from senabase.starterpack.database import PostgreSQLHandler
 
-sb_pg.configure('127.0.0.1', 5432, 'postgres', 'userid', 'userpassword')
+pgh = PostgreSQLHandler()
+pgh.configure('127.0.0.1', 5432, 'postgres', 'userid', 'userpassword')
 
 q1 = 'select now()'
-rs = sb_pg.get(q1)
+rs = pgh.get(q1)
 ```
 
-### sb_log
+### log
 
 Logging starterpack
 
 ```python
-from senabase.starterpack import sb_log
+from senabase.starterpack.log import SimpleLogger
 
-sb_log.configure('proto')
+log = SimpleLogger()
+log.configure('proto')
 
-sb_log.i('Information')
-sb_log.d('Debug')
-sb_log.e(Exception('Example exception'))
+log.i('Information')
+log.d('Debug')
+log.e(Exception('Example exception'))
 ```

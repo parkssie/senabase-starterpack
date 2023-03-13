@@ -6,8 +6,8 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / 'README.md').read_text()
 
 setup(name='senabase-starterpack',
-      version='0.1.5',
-      description='starterpack library',
+      version='0.1.6',
+      description='senabase starterpack library',
       long_description=long_description,
       long_description_content_type='text/markdown',
       author='Jungkyu Park',
